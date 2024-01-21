@@ -8,13 +8,13 @@
 */
 void f_mod(stack_t **head, unsigned int counter)
 {
-	stack_t *h;
+	stack_t *y;
 	int len = 0, aux;
 
-	h = *head;
-	while (h)
+	y = *head;
+	while (y)
 	{
-		h = h->next;
+		y = y->next;
 		len++;
 	}
 	if (len < 2)
@@ -25,8 +25,8 @@ void f_mod(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	if (h->n == 0)
+	y = *head;
+	if (y->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", counter);
 		fclose(bus.file);
@@ -34,8 +34,8 @@ void f_mod(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	aux = h->next->n % h->n;
-	h->next->n = aux;
-	*head = h->next;
-	free(h);
+	aux = y->next->n % y->n;
+	y->next->n = aux;
+	*head = y->next;
+	free(y);
 }
